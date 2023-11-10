@@ -67,7 +67,7 @@ export default function Example() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={`py-2 rounded-md text-md lg:text-lg relative no-underline transition-all delay-150 hover:delay-0 ease-in-out ${isActive ? "text-black hover:text-zinc-300" : "text-gray-700 dark:text-dark"}`}
+                        className={`py-2 rounded-md text-md lg:text-lg relative no-underline transition-all delay-150 hover:delay-0 ease-in-out`}
                         aria-current={item.href === pathname ? 'page' : undefined}
                       >
                         <span>{item.name}</span>
@@ -86,9 +86,10 @@ export default function Example() {
                 const isActive = item.href === pathname;
                 return (
                   <Disclosure.Button
+                    key={item.name}
                     as="a"
                     href={item.href}
-                    className={`block border-l-4 py-2 pl-3 pr-4 text-base font-medium ${isActive ? "border-indigo-500 bg-indigo-50 text-indigo-700" : "border-transparent text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"}`}
+                    className={`block border-l-4 py-2 pl-3 pr-4 text-base font-medium`}
                     aria-current={item.href === pathname ? 'page' : undefined}
                   >
                     {item.name}

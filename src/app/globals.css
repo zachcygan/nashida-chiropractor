@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.half {
+  height: 60vh;
+}

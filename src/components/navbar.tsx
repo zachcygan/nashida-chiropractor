@@ -1,13 +1,33 @@
 'use client'
-import { Fragment } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { usePathname } from 'next/navigation'
+import { AnimatePresence, motion } from "framer-motion"
+import Image from 'next/image'
+import Link from 'next/link'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
+const navigation = [
+  { name: 'About', href: '/about', current: true },
+  { name: 'Services', href: '/services', current: false },
+  { name: 'Location', href: '/location', current: false },
+  { name: 'Reviews', href: '/reviews', current: false },
+  { name: 'Contact', href: '#', current: false },
+]
+
 export default function Example() {
+  const pathname = usePathname();
+  const [hoveredPath, setHoveredPath] = useState(pathname || null);
+
+  useEffect(() => {
+    setHoveredPath(pathname);
+  }, [pathname]);
+
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -28,38 +48,59 @@ export default function Example() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
+                  <Image
+                    src="/assets/images/logo.png"
+                    width={250}
+                    height={250}
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt="Your Company"
                   />
                 </div>
-                <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                  <a
-                    href="#"
-                    className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
-                  >
-                    Dashboard
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Team
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Projects
-                  </a>
-                  <a
-                    href="#"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    Calendar
-                  </a>
+                <div className="hidden sm:ml-6 sm:flex sm:space-x-8 items-center">
+                {navigation.map((item) => {
+                      const isActive = item.href === pathname;
+                      return (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className={`py-2 rounded-md text-md lg:text-lg relative no-underline transition-all delay-150 hover:delay-0 ease-in-out ${isActive ? "text-black hover:text-zinc-300" : "text-gray-700 dark:text-dark"}`}
+                          aria-current={item.href === pathname ? 'page' : undefined}
+                          // onClick={(e) => {
+                          //   if (item.name === 'Contact') {
+                          //     e.preventDefault(); // prevent navigation
+                          //     setIsSlideOpen(true);
+                          //   }
+                          // }}
+                          // onMouseEnter={() => {
+                          //   if (timeoutRef.current) {
+                          //     window.clearTimeout(timeoutRef.current)
+                          //   }
+                          //   setHoveredPath(item.href)
+                          // }}
+                          // onMouseLeave={() => {
+                          //   timeoutRef.current = window.setTimeout(() => {
+                          //     setHoveredPath(null)
+                          //   }, 200)
+                          // }}
+                        >
+                          {/* <AnimatePresence>
+                            {item.href === hoveredPath && (
+                              <motion.span
+                                className="absolute inset-0 rounded-lg bg-gray-100/50"
+                                layoutId="hoverBackground"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1, transition: { duration: 0.15 } }}
+                                exit={{
+                                  opacity: 0,
+                                  transition: { duration: 0.15 },
+                                }}
+                              />
+                            )}
+                          </AnimatePresence> */}
+                          <span>{item.name}</span>
+                        </Link>
+                      );
+                    })}
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

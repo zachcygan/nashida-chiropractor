@@ -170,7 +170,7 @@ export default function ContactForm() {
                     className="outline-none block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     value={formData.subject}
                     onChange={updateFormData}
-                    placeholder='Wheel Chair Donation'
+                    placeholder='Available Appointments?'
                   />
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function ContactForm() {
                   className="outline-none block bg-transparent w-full rounded-md p-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={formData.message}
                   onChange={updateFormData}
-                  placeholder='Hello, I would like to donate a wheel chair.'
+                  placeholder='Hello, are you available on Tuesday for an appointment?'
                 />
               </div>
             </div>

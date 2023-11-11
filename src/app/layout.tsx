@@ -5,8 +5,8 @@ import Navbar from "../components/navbar"
 import Footer from "../components/footer"
 
 export const metadata: Metadata = {
-  title: 'Paul Nashida - Chriropractor',
-  description: 'Paul Nashida\'s Chiropractic Practice',
+  title: 'Paul Nishida - Chriropractor',
+  description: 'Paul Nishida\'s Chiropractic Practice',
 }
 
 export default function RootLayout({

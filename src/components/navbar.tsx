@@ -65,7 +65,7 @@ export default function Example() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={`py-2 rounded-md text-md lg:text-lg relative no-underline transition-all delay-150 hover:delay-0 ease-in-out`}
+                        className={`py-2 rounded-md text-md lg:text-lg font-semibold`}
                         aria-current={item.href === pathname ? 'page' : undefined}
                         onClick={(e) => {
                           if (item.name === 'Contact') {
@@ -95,6 +95,12 @@ export default function Example() {
                     href={item.href}
                     className={`block border-l-4 py-2 pl-3 pr-4 text-base font-medium`}
                     aria-current={item.href === pathname ? 'page' : undefined}
+                    onClick={(e) => {
+                      if (item.name === 'Contact') {
+                        e.preventDefault(); // prevent navigation
+                        setIsSlideOverOpen(true);
+                      }
+                    }}
                   >
                     {item.name}
                   </Disclosure.Button>

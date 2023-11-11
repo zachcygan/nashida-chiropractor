@@ -1,9 +1,10 @@
 'use client'
+import YelpReviews from '../../components/yelpReviews'
 
 export default function reviews() {
     return (
         <div>
-          test 3
+          <YelpReviews />
         </div>
     )
 }

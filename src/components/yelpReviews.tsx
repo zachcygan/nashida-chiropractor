@@ -80,7 +80,6 @@ export default function YelpReviews() {
               <p>
                 <div>{review.date}</div>
               </p>
-
               <div className="mt-4 flex items-center">
                 {[0, 1, 2, 3, 4].map((rating) => (
                   <StarIcon
@@ -94,11 +93,6 @@ export default function YelpReviews() {
                 ))}
               </div>
               <p className="sr-only">{review.rating} out of 5 stars</p>
-
-              {/* <div
-                    className="prose prose-sm mt-4 max-w-none text-gray-500"
-                    dangerouslySetInnerHTML={{ __html: review.content }}
-                  /> */}
               <div className='prose prose-sm mt-4 max-w-none text-gray-500'>
                 {review.content}
               </div>

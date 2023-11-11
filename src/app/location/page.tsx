@@ -1,9 +1,9 @@
-'use client'
+import OfficeMap from '../../components/map'
 
 export default function Location() {
     return (
         <div>
-          test 2
+          <OfficeMap />
         </div>
     )
 }

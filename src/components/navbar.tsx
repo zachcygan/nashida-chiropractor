@@ -3,6 +3,7 @@ import { Fragment, useState, useEffect } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon,  XMarkIcon } from '@heroicons/react/24/outline'
 import { usePathname } from 'next/navigation'
+import SlideOver from './slideOver'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -17,6 +18,7 @@ const navigation = [
 export default function Example() {
   const pathname = usePathname();
   const [hoveredPath, setHoveredPath] = useState(pathname || null);
+  const [isSlideOverOpen, setIsSlideOverOpen] = useState(false);
 
   useEffect(() => {
     setHoveredPath(pathname);
@@ -65,12 +67,19 @@ export default function Example() {
                         href={item.href}
                         className={`py-2 rounded-md text-md lg:text-lg relative no-underline transition-all delay-150 hover:delay-0 ease-in-out`}
                         aria-current={item.href === pathname ? 'page' : undefined}
+                        onClick={(e) => {
+                          if (item.name === 'Contact') {
+                            e.preventDefault(); // prevent navigation
+                            setIsSlideOverOpen(true);
+                          }
+                        }}
                       >
                         <span>{item.name}</span>
                       </Link>
                     );
                   })}
                 </div>
+                <SlideOver isOpen={isSlideOverOpen} onClose={() => setIsSlideOverOpen(false)} />
               </div>
             </div>
           </div>

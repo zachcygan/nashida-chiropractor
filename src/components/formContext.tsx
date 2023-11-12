@@ -22,8 +22,6 @@ interface FormDataContextProps {
   setEmailTouched: (value: boolean) => void;
 }
 
-
-
 const FormDataContext = createContext<FormDataContextProps | undefined>(undefined);
 interface FormDataProviderProps {
   children: ReactNode;
@@ -42,9 +40,6 @@ export const FormDataProvider = ({ children }: FormDataProviderProps) => {
 
   function updateFormData(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     e.preventDefault();
-    if (e.target.name === 'file-upload') {
-
-    }
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,

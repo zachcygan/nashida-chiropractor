@@ -3,7 +3,6 @@ import { useMemo, useState, useEffect } from 'react';
 import { GoogleMap, MarkerF, Marker, useLoadScript } from '@react-google-maps/api';
 
 function OfficeMap() {
-  const center = useMemo(() => ({ lat: 33.711520, lng: -117.816380 }), []);
   const office = useMemo(() => ({ lat: 33.659380, lng: -117.877340 }), []);
   const labelSize = { width: 200 }
   const labelPadding = 8;
@@ -14,7 +13,7 @@ function OfficeMap() {
   // };
 
   return (
-    <GoogleMap zoom={11} center={center} mapContainerClassName="map-container h-[50vh] max-w-5xl mx-auto">
+    <GoogleMap zoom={13} center={office} mapContainerClassName="map-container h-[50vh] max-w-5xl mx-auto">
       <MarkerF position={office}/>      
     </GoogleMap>
   );

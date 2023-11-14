@@ -16,12 +16,12 @@ const ourLinks = [
 
 export default function FindUs() {
   return (
-    <div className="py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="py-20 px-5">
+      <div className="mx-auto max-w-7xl px-3 lg:px-8">
         <h2 className='text-center text-4xl font-bold pb-5'>Find Us On</h2>
         <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl">
           {ourLinks.map((link, index) => (
-            <div className="bg-gray-800/20 p-8 sm:p-10" key={index}>
+            <div className={`bg-gray-800/20 p-5 ${index === 1 ? `rounded-r-md` : `rounded-l-md` }`} key={index}>
               <Link href={link.url} target='_'>
                 <Image
                   className="max-h-12 w-full object-contain"
@@ -31,7 +31,6 @@ export default function FindUs() {
                   height={48}
                 />
               </Link>
-              <div className='text-center pt-5'>test</div>
             </div>
           ))}
 

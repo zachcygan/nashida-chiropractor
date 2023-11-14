@@ -29,7 +29,7 @@ export default function Map() {
   useEffect(() => {
     setHasMounted(true);
   }, []);
-
+``
   if (!hasMounted) return null; // Return nothing until the component has mounted
   if (!isLoaded) return <div>Loading...</div>;
 
